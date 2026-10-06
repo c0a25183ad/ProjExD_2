@@ -41,7 +41,21 @@ def gameover(screen:pg.Surface) ->None :
     time.sleep(5)
 
 
-def 
+def get_kk_imgs() -> dict[tuple[int, int], pg.Surface]:
+    kk_img=pg.image.load("fig/3.png")
+    fli_kk_img=pg.transform.flip(kk_img,True,False)
+    kk_dict={
+        (0,0): pg.transform.rotozoom(fli_kk_img,0,1),
+        (0,5): pg.transform.rotozoom(fli_kk_img,270,1),
+        (0,-5) :pg.transform.rotozoom(fli_kk_img,90,1),
+        (5,0): pg.transform.rotozoom(fli_kk_img,0,1),
+        (5,-5):pg.transform.rotozoom(fli_kk_img,45,1),
+        (-5,0) :pg.transform.rotozoom(kk_img,0,1),
+        (-5,5):pg.transform.rotozoom(kk_img,45,1),
+        (-5,-5):pg.transform.rotozoom(kk_img,315,1),
+        (5,5):pg.transform.rotozoom(fli_kk_img,315,1)
+    }
+    return kk_dict
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -60,6 +74,7 @@ def main():
     clock = pg.time.Clock()
     tmr = 0
     while True:
+        kk_dict=get_kk_imgs()
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
@@ -75,6 +90,7 @@ def main():
         
         kk_rct.move_ip(sum_mv)
         bb_rct.move_ip(vx, vy) 
+        kk_img=kk_dict[tuple(sum_mv)]
         screen.blit(kk_img, kk_rct)
         if check_bound(kk_rct)!=(True,True):
             kk_rct.move_ip(-sum_mv[0],-sum_mv[1])

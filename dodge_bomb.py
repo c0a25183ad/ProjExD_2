@@ -42,6 +42,10 @@ def gameover(screen:pg.Surface) ->None :
 
 
 def get_kk_imgs() -> dict[tuple[int, int], pg.Surface]:
+    """
+    引数：なし
+    返すもの：移動に対応する向きの画像
+    """
     kk_img=pg.image.load("fig/3.png")
     fli_kk_img=pg.transform.flip(kk_img,True,False)
     kk_dict={

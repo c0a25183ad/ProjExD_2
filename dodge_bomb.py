@@ -27,6 +27,7 @@ def gameover(screen:pg.Surface) ->None :
     """
     引数：screen
     戻り値：なし
+    ゲームオーバーしたときに、画面を表示します
     """
     gobg_img=pg.Surface((WIDTH,HEIGHT))
     pg.draw.rect(gobg_img,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))

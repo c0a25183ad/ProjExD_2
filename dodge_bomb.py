@@ -67,7 +67,8 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
-
+        if kk_rct.colliderect(bb_rct)==True:
+            break
 
 
 if __name__ == "__main__":
